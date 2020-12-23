@@ -9,19 +9,16 @@ spec:
       default: World
       type: string
   steps:
-    - name: write-hello
-      image: registry.access.redhat.com/ubi8/ubi
+    - name: using-debian
+      image: debian:stable-slim
       script: |
         #!/usr/bin/env bash
         echo Preparing greeting
         echo Hello $(params.person) > ~/hello.txt
         sleep 2
         echo Done!
-    - name: say-hello
-      image: node:14
+    - name: from-alpine
+      image: alpine:3.12.3
       script: |
-        #!/usr/bin/env node
-        let fs = require("fs");
-        let file = "/tekton/home/hello.txt";
-        let fileContent = fs.readFileSync(file).toString();
-        console.log(fileContent);
+        #!/usr/bin/env sh
+        cat ~/hello.txt

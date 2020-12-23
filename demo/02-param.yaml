@@ -10,7 +10,7 @@ spec:
       type: string
   steps:
     - name: say-hello
-      image: registry.access.redhat.com/ubi8/ubi
+      image: debian:stable-slim
       command:
         - /bin/bash
       args: ['-c', 'echo Hello $(params.person)']

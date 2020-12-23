@@ -14,7 +14,7 @@ spec:
       type: string
   steps:
     - name: say-it
-      image: registry.access.redhat.com/ubi8/ubi
+      image: debian:stable-slim
       command:
         - /bin/bash
       args: ['-c', 'sleep $(params.pause-duration) && echo $(params.say-what)']
